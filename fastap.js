@@ -14,7 +14,7 @@ $.fn.tap = function(handler) {
         var isSroll = false,
             isEnd = false,
             isFeed = false,
-            delay = 50;
+            delay = 20;
 
         function scrollHandler(e) {
             isSroll = true;
@@ -29,10 +29,9 @@ $.fn.tap = function(handler) {
             if (isSroll) {
                 return;
             }
-
             setTimeout(function() {
                 isFeed && handler && handler(event);
-            }, 20);
+            }, 30);
         }
         $con.on('touchmove', scrollHandler);
         $tar.on('touchend', endHandler);
