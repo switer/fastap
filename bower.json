@@ -1,0 +1,26 @@
+{
+  "name": "fastap",
+  "main": "fastap.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/switer/fastap",
+  "authors": [
+    "switer <guankaishe@gmail.com>"
+  ],
+  "description": "Simple, fast & small Fastclick module, use touch events simulate click on touch device.",
+  "keywords": [
+    "fast",
+    "click",
+    "tap",
+    "touch",
+    "simulate",
+    "fastap"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
