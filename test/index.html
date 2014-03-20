@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <title>Touch Simulate Click Testing</title>
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+           v2.0 | 20110126
+           License: none (public domain)
+        */
+        
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure, 
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+    </style>
+    <style>
+        .list-head, .list-line{
+            text-align: center;
+            line-height: 60px;
+        }
+        .list-line {
+            border-top: 1px solid #ccc;
+            color: cornflowerblue;
+        }
+        .list-item {
+            border-top: 1px solid #ccc;
+            line-height: 50px;
+            font-size: 18px;
+            padding: 0 20px;
+            color: #BBB;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- div.list-item[data-index=$]{click me !, I am $}*20 -->
+    <h1 class="list-head" data-index="0">Touch Simulate Click Testing</h1>
+    <h1 class="list-line" data-index="0" id="bindCancel">Cancal All Binding</h1>
+    <div class="list-item" data-index="1">click me !, I am 1</div>
+    <div class="list-item" data-index="2">click me !, I am 2</div>
+    <div class="list-item" data-index="3">click me !, I am 3</div>
+    <div class="list-item" data-index="4">click me !, I am 4</div>
+    <div class="list-item" data-index="5">click me !, I am 5</div>
+    <div class="list-item" data-index="6">click me !, I am 6</div>
+    <div class="list-item" data-index="7">click me !, I am 7</div>
+    <div class="list-item" data-index="8">click me !, I am 8</div>
+    <div class="list-item" data-index="9">click me !, I am 9</div>
+    <div class="list-item" data-index="10">click me !, I am 10</div>
+    <div class="list-item" data-index="11">click me !, I am 11</div>
+    <div class="list-item" data-index="12">click me !, I am 12</div>
+    <div class="list-item" data-index="13">click me !, I am 13</div>
+    <div class="list-item" data-index="14">click me !, I am 14</div>
+    <div class="list-item" data-index="15">click me !, I am 15</div>
+    <div class="list-item" data-index="16">click me !, I am 16</div>
+    <div class="list-item" data-index="17">click me !, I am 17</div>
+    <div class="list-item" data-index="18">click me !, I am 18</div>
+    <div class="list-item" data-index="19">click me !, I am 19</div>
+    <div class="list-item" data-index="20">click me !, I am 20</div>
+    <div class="list-item" data-index="21">click me !, I am 21</div>
+    <div class="list-item" data-index="22">click me !, I am 22</div>
+    <div class="list-item" data-index="23">click me !, I am 23</div>
+    <div class="list-item" data-index="24">click me !, I am 24</div>
+    <div class="list-item" data-index="25">click me !, I am 25</div>
+    <div class="list-item" data-index="26">click me !, I am 26</div>
+    <div class="list-item" data-index="27">click me !, I am 27</div>
+    <div class="list-item" data-index="28">click me !, I am 28</div>
+    <div class="list-item" data-index="29">click me !, I am 29</div>
+    <div class="list-item" data-index="30">click me !, I am 30</div>
+</body>
+<script src="../bower_components/zepto/zepto.js"></script>
+<script src="../fastap.js"></script>
+<script>
+    function conBinding (e) {
+        alert('banding in container ' + $(e.target).data('index'));
+    }
+    function itemBidning (e) {
+        alert('banding in item ' + $(e.target).data('index'));
+    }
+    $('#bindCancel').tap(function (e) {
+        alert('~~~ cancal binding');
+        $('body').tapOff();
+        $('.list-item').tapOff(itemBidning);
+    });
+
+    $('body').tap(conBinding);
+    $('.list-item').tap(itemBidning);
+
+</script>
+</html>
