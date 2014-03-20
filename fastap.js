@@ -1,9 +1,4 @@
 ! function() {
-    var eventManger = {
-            events: []
-        },
-        touchable = isTouchDevice;
-
     // touch event support detect
     function isTouchDevice() {
         try {
@@ -13,6 +8,13 @@
             return false;
         }
     }
+
+    var eventManger = {
+            events: []
+        },
+        // touchable = isTouchDevice();
+        touchable = true;
+
 
     // Add scroll forzen time when using touch simulate click
     if (touchable) {
@@ -144,20 +146,19 @@
         var events = [];
         for (var i = 0; i < eventManger.events.length; i++) {
             var evtObj = eventManger.events[i],
-                isMatched = false;
+                isMatched = false,
+                matchEls = [];
 
             if (evtObj) {
                 this.each(function(index, el) {
                     evtObj.$el.each(function(index, target) {
                         if (target == el) {
-                            isMatched = true;
-                            return true;
+                            matchEls.push(el);
                         }
                     });
-                    if (isMatched) return true;
                 });
-                if ( ( !evtHandler || evtHandler === evtObj.handler) && isMatched) {
-                    this.off('touchstart', evtObj.listener);
+                if ( ( !evtHandler || evtHandler === evtObj.handler) && matchEls.length > 0) {
+                    $(matchEls).off('touchstart', evtObj.listener);
                     continue;
                 }
                 
