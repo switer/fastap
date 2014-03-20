@@ -12,8 +12,7 @@
     var eventManger = {
             events: []
         },
-        // touchable = isTouchDevice();
-        touchable = true;
+        touchable = isTouchDevice();
 
 
     // Add scroll forzen time when using touch simulate click
