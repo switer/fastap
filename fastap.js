@@ -138,7 +138,7 @@
     $.fn.tapOff = function(evtHandler) {
 
         if (!touchable) {
-            this.of('click', evtHandler);
+            this.off('click', evtHandler);
             return;
         }
         // touch events off
