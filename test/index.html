@@ -76,7 +76,7 @@
 <body>
     <!-- div.list-item[data-index=$]{click me !, I am $}*20 -->
     <h1 class="list-head" data-index="0">Touch Simulate Click Testing</h1>
-    <h1 class="list-line" data-index="0" id="bindCancel">Cancal All Binding</h1>
+    <h1 class="list-line" data-index="0" id="bindCancel">Cancel All Binding</h1>
     <div class="list-item" data-index="1">click me !, I am 1</div>
     <div class="list-item" data-index="2">click me !, I am 2</div>
     <div class="list-item" data-index="3">click me !, I am 3</div>
@@ -118,7 +118,7 @@
         alert('banding in item ' + $(e.target).data('index'));
     }
     $('#bindCancel').tap(function (e) {
-        alert('~~~ cancal binding');
+        alert('~~~ cancel binding');
         $('body').tapOff();
         $('.list-item').tapOff(itemBidning);
     });
