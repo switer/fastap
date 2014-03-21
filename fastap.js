@@ -105,7 +105,7 @@
 
                 setTimeout(function() {
                     !isTimeout && !isScroll && isFeed && handler && handler(event, ctx);
-                }, 30);
+                });
 
             }
 
