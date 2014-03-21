@@ -108,23 +108,42 @@
     <div class="list-item" data-index="29">click me !, I am 29</div>
     <div class="list-item" data-index="30">click me !, I am 30</div>
 </body>
-<script src="../bower_components/zepto/zepto.js"></script>
-<script src="../fastap.js"></script>
+<script src="bower_components/zepto/zepto.js"></script>
+<script src="fastap.js"></script>
 <script>
-    function conBinding (e) {
-        alert('banding in container ' + $(e.target).data('index'));
-    }
-    function itemBidning (e) {
-        alert('banding in item ' + $(e.target).data('index'));
-    }
+
     $('#bindCancel').tap(function (e) {
-        alert('~~~ cancel binding');
         $('body').tapOff();
         $('.list-item').tapOff(itemBidning);
     });
 
-    $('body').tap(conBinding);
-    $('.list-item').tap(itemBidning);
+
+    var startTime,
+        clickTime,
+        tapTime,
+        count = 0;
+
+    function showTime() {
+        count ++;
+        if (count >= 2) {
+            alert(['tap trigger time: ', tapTime, ' \nclick trigger time: ', clickTime].join(''));
+            count = 0;
+        }
+    }
+    $('.list-item').on('touchstart', function () {
+        startTime = (new Date).getTime();
+    });
+
+    function itemBidning (e) {
+        tapTime = (new Date).getTime() - startTime;
+        showTime();
+    }
+        $('.list-item').tap(itemBidning);
+
+    $('.list-item').on('click', function () {
+        clickTime = (new Date).getTime() - startTime;
+        showTime();
+    })
 
 </script>
 </html>
