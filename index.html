@@ -55,6 +55,14 @@
         }
     </style>
     <style>
+        .toast-wrapper {position: fixed; width: 100%;display: -webkit-box;bottom: 40px;}
+        .toast-holder {-webkit-box-flex:1;}
+        .toast-msg {position: relative;margin: auto; border-radius: 3px; background-color: rgba(0,0,0,0.6); 
+            display: inline-block; line-height: 20px; padding: 5px;color: white;font-size: 15px;
+            box-shadow: 0 0 3px 1px #ccc;-webkit-transition: opacity 1s linear;}
+        .toast-msg.hide {opacity: 0;}
+    </style>
+    <style>
         .list-head, .list-line{
             text-align: center;
             line-height: 60px;
@@ -126,7 +134,7 @@
     function showTime() {
         count ++;
         if (count >= 2) {
-            alert(['tap trigger time: ', tapTime, ' \nclick trigger time: ', clickTime].join(''));
+            toast(['tap time: ', tapTime, ' \nclick time: ', clickTime].join(''));
             count = 0;
         }
     }
@@ -138,12 +146,37 @@
         tapTime = (new Date).getTime() - startTime;
         showTime();
     }
-        $('.list-item').tap(itemBidning);
+    $('.list-item').tap(itemBidning);
 
     $('.list-item').on('click', function () {
         clickTime = (new Date).getTime() - startTime;
         showTime();
     })
 
+</script>
+<script>
+    function toast (message) {
+        var ctx = this,
+            html = '<div class="toast-wrapper">' +
+                        '<div class="toast-holder"></div>' +
+                        '<div class="toast-msg" data-msg="' + message+ '">' + message+ '</div>' +
+                        '<div class="toast-holder"></div>' +
+                    '</div>',
+            $toast = $(html);
+
+        if (this.$toast) this.$toast.remove();
+
+        $('body').append($toast);
+
+        setTimeout( function() {
+            $toast.find('.toast-msg').addClass('hide');
+            $toast.on('webkitTransitionEnd', function () {
+                $toast.remove();
+                ctx.$toast = null;
+            });
+        }, 1500);
+            
+        this.$toast = $toast;
+    }
 </script>
 </html>
