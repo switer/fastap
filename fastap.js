@@ -16,12 +16,12 @@
 
 
     // Add scroll forzen time when using touch simulate click
+    var isScroll = false,
+        timeoutTimer;
+
     if (touchable) {
-
-        var isScroll = false,
-            timeoutTimer;
-
-        function scrollHandler () {
+        
+        $(window).on('scroll', function () {
             // 标识为出于滚动冷冻期
             isScroll = true;
             // 清除上次滚动冷冻timer
@@ -30,10 +30,9 @@
             timeoutTimer = setTimeout(function() {
                 isScroll = false;
             }, 300);
-        }
+        });
     }
 
-    $(window).on('scroll', scrollHandler);
 
     /**
      *  覆盖zepto默认的tap

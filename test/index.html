@@ -115,15 +115,35 @@
         alert('banding in container ' + $(e.target).data('index'));
     }
     function itemBidning (e) {
-        alert('banding in item ' + $(e.target).data('index'));
+        // alert('banding in item ' + $(e.target).data('index'));
+        showTime();
     }
     $('#bindCancel').tap(function (e) {
-        alert('~~~ cancel binding');
         $('body').tapOff();
         $('.list-item').tapOff(itemBidning);
     });
 
     $('body').tap(conBinding);
+
+    var startTime,
+        clickTime,
+        tapTime,
+        count = 0;
+
+    function showTime() {
+        count ++;
+        if (count >= 2) {
+            alert(['tap: ', tapTime, 'click: ', clickTime].join('=='));
+        }
+    }
+    $('.list-item').on('touchstart', function () {
+        clickTime = (new Date).getTime() - startTime;
+        showTime();
+    });
+    $('.list-item').on('click', function () {
+        tapTime = (new Date).getTime() - startTime;
+        showTime();
+    })
     $('.list-item').tap(itemBidning);
 
 </script>
