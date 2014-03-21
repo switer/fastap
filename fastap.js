@@ -75,7 +75,7 @@
             var isMove = false,
                 isFeed = false,
                 isTimeout = false,
-                delay = 40; // 此值与滚动触发点击的灵敏度和点击透传的出现几率有关
+                delay = 20; // 此值与滚动触发点击的灵敏度和点击透传的出现几率有关
 
             // 获取touchmove的偏移地址
             function moveHandler(e) {
@@ -105,7 +105,7 @@
 
                 setTimeout(function() {
                     !isTimeout && !isScroll && isFeed && handler && handler(event, ctx);
-                }, 40);
+                }, 30);
 
             }
 
